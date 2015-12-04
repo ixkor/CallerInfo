@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name" translatable="false">Caller Info</string>
+    <string name="message">App installed successfully. You can close it.</string>
+</resources>
