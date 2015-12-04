@@ -97,8 +97,10 @@ public class CallReceiver extends BroadcastReceiver {
                     windowManager.addView(view, params);
                 }
             } else if (phoneState.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)) {
-                if (incomingCall) {
+                if (incomingCall && view != null) {
                     incomingCall = false;
+                    windowManager.removeView(view);
+                    view = null;
                 }
                 Log.d(TAG, "Outgoing call");
             } else if (phoneState.equals(TelephonyManager.EXTRA_STATE_IDLE)) {
