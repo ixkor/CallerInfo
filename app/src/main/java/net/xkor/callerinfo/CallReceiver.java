@@ -154,7 +154,7 @@ public class CallReceiver extends BroadcastReceiver {
 
             if (cursor != null && cursor.moveToFirst()) {
                 String groups = "";
-                while (true) {
+                while (!cursor.isAfterLast()) {
                     if (cursor.getInt(cursor.getColumnIndex(ContactsContract.Groups.AUTO_ADD)) == 1 ||
                             cursor.getInt(cursor.getColumnIndex(ContactsContract.Groups.FAVORITES)) == 1) {
                         cursor.moveToNext();
