@@ -6,11 +6,11 @@ android {
 
     defaultConfig {
         applicationId "net.xkor.callerinfo"
-        minSdkVersion 21
+        minSdkVersion 22
         maxSdkVersion 22
         targetSdkVersion 22
-        versionCode 2
-        versionName "1.1"
+        versionCode 3
+        versionName "1.2"
     }
 
     dataBinding {
