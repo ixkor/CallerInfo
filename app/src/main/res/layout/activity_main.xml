@@ -1,14 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="net.xkor.callerinfo.MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:gravity="center"
-        android:text="@string/message"
+    <data>
+
+        <variable
+            name="preferences"
+            type="net.xkor.callerinfo.Preferences" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-</RelativeLayout>
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            tools:context="net.xkor.callerinfo.MainActivity">
+
+            <Switch
+                android:id="@+id/vertical_orientation"
+                style="@style/Option"
+                android:checked="@{preferences.isVerticalOrientation()}"
+                android:text="Vertical orientation" />
+
+            <Switch
+                android:id="@+id/show_name"
+                style="@style/Option"
+                android:checked="@{preferences.isShowName()}"
+                android:text="Show contact name" />
+
+            <Switch
+                android:id="@+id/show_groups"
+                style="@style/Option"
+                android:checked="@{preferences.isShowGroups()}"
+                android:text="Show contact groups" />
+
+            <Switch
+                android:id="@+id/only_if_photo_exists"
+                style="@style/Option"
+                android:checked="@{preferences.isOnlyIfPhotoExists()}"
+                android:text="Display only when contact has photo and name" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Photo size:"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <SeekBar
+                android:id="@+id/photo_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="15"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:progress="@{preferences.getPhotoSize()}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50"
+                    android:textColor="?android:attr/textColorPrimary" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="200"
+                    android:textColor="?android:attr/textColorPrimary" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Example:"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <include
+                android:id="@+id/example"
+                layout="@layout/overlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                bind:preferences="@{preferences}" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

@@ -1,49 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:drawable/dialog_holo_light_frame"
-    android:orientation="vertical"
-    tools:ignore="RtlHardcoded">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/photo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:contentDescription="@null"
-        android:padding="5dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/user" />
+    <data>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/photo"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/photo"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        <import type="android.widget.LinearLayout" />
 
-        <TextView
-            android:id="@+id/name"
+        <import type="android.view.Gravity" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="preferences"
+            type="net.xkor.callerinfo.Preferences" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/overlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:textSize="20sp"
-            tools:text="Ivanov Ivan" />
+            android:layout_gravity="center"
+            android:animateLayoutChanges="true"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:gravity="center"
+            android:orientation="@{preferences.isVerticalOrientation() ? LinearLayout.VERTICAL : LinearLayout.HORIZONTAL}"
+            tools:ignore="RtlHardcoded">
 
-        <TextView
-            android:id="@+id/info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textColor="#444"
-            android:textSize="16sp"
-            tools:text="Home" />
+            <ImageView
+                android:id="@+id/photo"
+                android:layout_width="@dimen/min_photo_size"
+                android:layout_height="@dimen/min_photo_size"
+                android:layout_margin="5dp"
+                android:contentDescription="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/user"
+                app:size="@{(int)@dimen/min_photo_size + preferences.getPhotoSize() * (int)@dimen/photo_size_mul}" />
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/info_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:gravity="@{preferences.isVerticalOrientation() ? Gravity.CENTER : Gravity.CENTER_VERTICAL}"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:visibility="@{(preferences.isShowName() || preferences.isShowGroups()) ? View.VISIBLE : View.GONE}">
 
-</RelativeLayout>
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:visibility="@{preferences.isShowName() ? View.VISIBLE : View.GONE}"
+                    tools:text="@string/example_name" />
+
+                <TextView
+                    android:id="@+id/info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#444"
+                    android:textSize="16sp"
+                    android:visibility="@{preferences.isShowGroups() ? View.VISIBLE : View.GONE}"
+                    tools:text="@string/example_groups" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:visibility="@{(preferences.isShowName() || preferences.isShowGroups()) ? View.VISIBLE : View.GONE}" />
+
+        </LinearLayout>
+    </FrameLayout>
+</layout>
