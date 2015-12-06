@@ -22,37 +22,38 @@
             android:animateLayoutChanges="true"
             android:orientation="vertical"
             android:paddingTop="10dp"
-            tools:context="net.xkor.callerinfo.MainActivity">
+            tools:context="net.xkor.callerinfo.MainActivity"
+            tools:ignore="ScrollViewSize">
 
             <Switch
                 android:id="@+id/vertical_orientation"
                 style="@style/Option"
                 android:checked="@{preferences.isVerticalOrientation()}"
-                android:text="Vertical orientation" />
+                android:text="@string/vertical_orientation" />
 
             <Switch
                 android:id="@+id/show_name"
                 style="@style/Option"
                 android:checked="@{preferences.isShowName()}"
-                android:text="Show contact name" />
+                android:text="@string/show_contact_name" />
 
             <Switch
                 android:id="@+id/show_groups"
                 style="@style/Option"
                 android:checked="@{preferences.isShowGroups()}"
-                android:text="Show contact groups" />
+                android:text="@string/show_contact_groups" />
 
             <Switch
                 android:id="@+id/only_if_photo_exists"
                 style="@style/Option"
                 android:checked="@{preferences.isOnlyIfPhotoExists()}"
-                android:text="Display only when contact has photo and name" />
+                android:text="@string/display_if" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="Photo size:"
+                android:text="@string/photo_size"
                 android:textColor="?android:attr/textColorPrimary" />
 
             <SeekBar
@@ -99,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="Example:"
+                android:text="@string/example_title"
                 android:textColor="?android:attr/textColorPrimary" />
 
             <include

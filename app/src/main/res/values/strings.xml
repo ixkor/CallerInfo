@@ -3,4 +3,10 @@
     <string name="message">App installed successfully. You can close it.</string>
     <string name="example_name">Ivanov Ivan</string>
     <string name="example_groups">Family</string>
+    <string name="vertical_orientation">Vertical orientation</string>
+    <string name="show_contact_name">Show contact name</string>
+    <string name="show_contact_groups">Show contact groups</string>
+    <string name="display_if">Display only when contact has photo and name</string>
+    <string name="photo_size">Photo size:</string>
+    <string name="example_title">Example:</string>
 </resources>

@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="message">Приложение успешно установлено. Вы можете закрыть его.</string>
+    <string name="display_if">Показывать только когда у контакта есть фотография и имя</string>
+    <string name="example_groups">Семья</string>
+    <string name="example_name">Иванов Иван</string>
+    <string name="example_title">Пример:</string>
+    <string name="photo_size">Размер фотографии:</string>
+    <string name="show_contact_groups">Показывать группы контакта</string>
+    <string name="show_contact_name">Показывать имя контакта</string>
+    <string name="vertical_orientation">Вертикальный режим</string>
 </resources>
