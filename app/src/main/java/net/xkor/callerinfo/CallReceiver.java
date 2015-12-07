@@ -39,7 +39,7 @@ public class CallReceiver extends BroadcastReceiver {
 
     private static boolean incomingCall = false;
     private static WindowManager windowManager;
-    private OverlayBinding overlay;
+    private static OverlayBinding overlay;
 
     @Override
     public void onReceive(Context context, Intent intent) {
